@@ -30,109 +30,111 @@
         {
             this.txtBxInput = new System.Windows.Forms.TextBox();
             this.lblInteractions = new System.Windows.Forms.Label();
-            this.grpBoxTools = new System.Windows.Forms.GroupBox();
-            this.BtnRun = new System.Windows.Forms.Button();
-            this.rdbSort = new System.Windows.Forms.RadioButton();
-            this.rdbSearch = new System.Windows.Forms.RadioButton();
+            this.BtnClear = new System.Windows.Forms.Button();
             this.listBoxOutput = new System.Windows.Forms.ListBox();
-            this.rdBtnEdit = new System.Windows.Forms.RadioButton();
-            this.grpBoxTools.SuspendLayout();
+            this.BtnSearch = new System.Windows.Forms.Button();
+            this.BtnSort = new System.Windows.Forms.Button();
+            this.BtnEdit = new System.Windows.Forms.Button();
+            this.BtnDelete = new System.Windows.Forms.Button();
+            this.BtnQuit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtBxInput
             // 
-            this.txtBxInput.Location = new System.Drawing.Point(328, 59);
+            this.txtBxInput.Location = new System.Drawing.Point(34, 62);
             this.txtBxInput.Name = "txtBxInput";
-            this.txtBxInput.Size = new System.Drawing.Size(100, 20);
+            this.txtBxInput.Size = new System.Drawing.Size(248, 20);
             this.txtBxInput.TabIndex = 0;
             // 
             // lblInteractions
             // 
             this.lblInteractions.AutoSize = true;
-            this.lblInteractions.Location = new System.Drawing.Point(325, 34);
+            this.lblInteractions.Location = new System.Drawing.Point(31, 46);
             this.lblInteractions.Name = "lblInteractions";
             this.lblInteractions.Size = new System.Drawing.Size(105, 13);
             this.lblInteractions.TabIndex = 1;
             this.lblInteractions.Text = "Neutrino Interactions";
             // 
-            // grpBoxTools
+            // BtnClear
             // 
-            this.grpBoxTools.Controls.Add(this.rdBtnEdit);
-            this.grpBoxTools.Controls.Add(this.rdbSort);
-            this.grpBoxTools.Controls.Add(this.rdbSearch);
-            this.grpBoxTools.Location = new System.Drawing.Point(298, 98);
-            this.grpBoxTools.Name = "grpBoxTools";
-            this.grpBoxTools.Size = new System.Drawing.Size(155, 110);
-            this.grpBoxTools.TabIndex = 2;
-            this.grpBoxTools.TabStop = false;
-            this.grpBoxTools.Text = "groupBoxTools";
-            // 
-            // BtnRun
-            // 
-            this.BtnRun.Location = new System.Drawing.Point(328, 230);
-            this.BtnRun.Name = "BtnRun";
-            this.BtnRun.Size = new System.Drawing.Size(100, 23);
-            this.BtnRun.TabIndex = 8;
-            this.BtnRun.Text = "Run";
-            this.BtnRun.UseVisualStyleBackColor = true;
-            // 
-            // rdbSort
-            // 
-            this.rdbSort.AutoSize = true;
-            this.rdbSort.Location = new System.Drawing.Point(30, 42);
-            this.rdbSort.Name = "rdbSort";
-            this.rdbSort.Size = new System.Drawing.Size(44, 17);
-            this.rdbSort.TabIndex = 1;
-            this.rdbSort.TabStop = true;
-            this.rdbSort.Text = "Sort";
-            this.rdbSort.UseVisualStyleBackColor = true;
-            this.rdbSort.CheckedChanged += new System.EventHandler(this.rdbSort_CheckedChanged);
-            // 
-            // rdbSearch
-            // 
-            this.rdbSearch.AutoSize = true;
-            this.rdbSearch.Location = new System.Drawing.Point(30, 19);
-            this.rdbSearch.Name = "rdbSearch";
-            this.rdbSearch.Size = new System.Drawing.Size(59, 17);
-            this.rdbSearch.TabIndex = 0;
-            this.rdbSearch.TabStop = true;
-            this.rdbSearch.Text = "Search";
-            this.rdbSearch.UseVisualStyleBackColor = true;
-            this.rdbSearch.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.BtnClear.Location = new System.Drawing.Point(330, 320);
+            this.BtnClear.Name = "BtnClear";
+            this.BtnClear.Size = new System.Drawing.Size(100, 23);
+            this.BtnClear.TabIndex = 8;
+            this.BtnClear.Text = "Clear";
+            this.BtnClear.UseVisualStyleBackColor = true;
             // 
             // listBoxOutput
             // 
             this.listBoxOutput.FormattingEnabled = true;
-            this.listBoxOutput.Location = new System.Drawing.Point(34, 59);
+            this.listBoxOutput.Location = new System.Drawing.Point(34, 111);
             this.listBoxOutput.Name = "listBoxOutput";
-            this.listBoxOutput.Size = new System.Drawing.Size(200, 368);
+            this.listBoxOutput.Size = new System.Drawing.Size(248, 316);
             this.listBoxOutput.TabIndex = 4;
             // 
-            // rdBtnEdit
+            // BtnSearch
             // 
-            this.rdBtnEdit.AutoSize = true;
-            this.rdBtnEdit.Location = new System.Drawing.Point(31, 65);
-            this.rdBtnEdit.Name = "rdBtnEdit";
-            this.rdBtnEdit.Size = new System.Drawing.Size(43, 17);
-            this.rdBtnEdit.TabIndex = 9;
-            this.rdBtnEdit.TabStop = true;
-            this.rdBtnEdit.Text = "Edit";
-            this.rdBtnEdit.UseVisualStyleBackColor = true;
+            this.BtnSearch.Location = new System.Drawing.Point(328, 111);
+            this.BtnSearch.Name = "BtnSearch";
+            this.BtnSearch.Size = new System.Drawing.Size(102, 23);
+            this.BtnSearch.TabIndex = 9;
+            this.BtnSearch.Text = "Search";
+            this.BtnSearch.UseVisualStyleBackColor = true;
+            this.BtnSearch.Click += new System.EventHandler(this.BtnSearch_Click);
+            // 
+            // BtnSort
+            // 
+            this.BtnSort.Location = new System.Drawing.Point(328, 162);
+            this.BtnSort.Name = "BtnSort";
+            this.BtnSort.Size = new System.Drawing.Size(102, 23);
+            this.BtnSort.TabIndex = 10;
+            this.BtnSort.Text = "Sort";
+            this.BtnSort.UseVisualStyleBackColor = true;
+            this.BtnSort.Click += new System.EventHandler(this.BtnSort_Click);
+            // 
+            // BtnEdit
+            // 
+            this.BtnEdit.Location = new System.Drawing.Point(328, 214);
+            this.BtnEdit.Name = "BtnEdit";
+            this.BtnEdit.Size = new System.Drawing.Size(102, 23);
+            this.BtnEdit.TabIndex = 11;
+            this.BtnEdit.Text = "Edit";
+            this.BtnEdit.UseVisualStyleBackColor = true;
+            // 
+            // BtnDelete
+            // 
+            this.BtnDelete.Location = new System.Drawing.Point(328, 264);
+            this.BtnDelete.Name = "BtnDelete";
+            this.BtnDelete.Size = new System.Drawing.Size(102, 23);
+            this.BtnDelete.TabIndex = 12;
+            this.BtnDelete.Text = "Delete";
+            this.BtnDelete.UseVisualStyleBackColor = true;
+            // 
+            // BtnQuit
+            // 
+            this.BtnQuit.Location = new System.Drawing.Point(328, 404);
+            this.BtnQuit.Name = "BtnQuit";
+            this.BtnQuit.Size = new System.Drawing.Size(102, 23);
+            this.BtnQuit.TabIndex = 13;
+            this.BtnQuit.Text = "Quit";
+            this.BtnQuit.UseVisualStyleBackColor = true;
             // 
             // FrmAstroProcessing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(474, 450);
+            this.Controls.Add(this.BtnQuit);
+            this.Controls.Add(this.BtnDelete);
+            this.Controls.Add(this.BtnEdit);
+            this.Controls.Add(this.BtnSort);
+            this.Controls.Add(this.BtnSearch);
             this.Controls.Add(this.listBoxOutput);
-            this.Controls.Add(this.BtnRun);
-            this.Controls.Add(this.grpBoxTools);
+            this.Controls.Add(this.BtnClear);
             this.Controls.Add(this.lblInteractions);
             this.Controls.Add(this.txtBxInput);
             this.Name = "FrmAstroProcessing";
             this.Text = "Astronomical Processing";
-            this.grpBoxTools.ResumeLayout(false);
-            this.grpBoxTools.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -142,12 +144,13 @@
 
         private System.Windows.Forms.TextBox txtBxInput;
         private System.Windows.Forms.Label lblInteractions;
-        private System.Windows.Forms.GroupBox grpBoxTools;
-        private System.Windows.Forms.RadioButton rdbSort;
-        private System.Windows.Forms.RadioButton rdbSearch;
         private System.Windows.Forms.ListBox listBoxOutput;
-        private System.Windows.Forms.Button BtnRun;
-        private System.Windows.Forms.RadioButton rdBtnEdit;
+        private System.Windows.Forms.Button BtnClear;
+        private System.Windows.Forms.Button BtnSearch;
+        private System.Windows.Forms.Button BtnSort;
+        private System.Windows.Forms.Button BtnEdit;
+        private System.Windows.Forms.Button BtnDelete;
+        private System.Windows.Forms.Button BtnQuit;
     }
 }
 
