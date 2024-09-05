@@ -30,13 +30,15 @@
         {
             this.txtBxInput = new System.Windows.Forms.TextBox();
             this.lblInteractions = new System.Windows.Forms.Label();
-            this.BtnClear = new System.Windows.Forms.Button();
             this.listBoxOutput = new System.Windows.Forms.ListBox();
             this.BtnSearch = new System.Windows.Forms.Button();
             this.BtnSort = new System.Windows.Forms.Button();
             this.BtnEdit = new System.Windows.Forms.Button();
             this.BtnDelete = new System.Windows.Forms.Button();
-            this.BtnQuit = new System.Windows.Forms.Button();
+            this.txtIndex = new System.Windows.Forms.TextBox();
+            this.txtNewValue = new System.Windows.Forms.TextBox();
+            this.lblIndex = new System.Windows.Forms.Label();
+            this.lblNewValue = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtBxInput
@@ -55,21 +57,12 @@
             this.lblInteractions.TabIndex = 1;
             this.lblInteractions.Text = "Neutrino Interactions";
             // 
-            // BtnClear
-            // 
-            this.BtnClear.Location = new System.Drawing.Point(330, 320);
-            this.BtnClear.Name = "BtnClear";
-            this.BtnClear.Size = new System.Drawing.Size(100, 23);
-            this.BtnClear.TabIndex = 8;
-            this.BtnClear.Text = "Clear";
-            this.BtnClear.UseVisualStyleBackColor = true;
-            // 
             // listBoxOutput
             // 
             this.listBoxOutput.FormattingEnabled = true;
             this.listBoxOutput.Location = new System.Drawing.Point(34, 111);
             this.listBoxOutput.Name = "listBoxOutput";
-            this.listBoxOutput.Size = new System.Drawing.Size(248, 316);
+            this.listBoxOutput.Size = new System.Drawing.Size(248, 173);
             this.listBoxOutput.TabIndex = 4;
             // 
             // BtnSearch
@@ -84,7 +77,7 @@
             // 
             // BtnSort
             // 
-            this.BtnSort.Location = new System.Drawing.Point(328, 162);
+            this.BtnSort.Location = new System.Drawing.Point(328, 192);
             this.BtnSort.Name = "BtnSort";
             this.BtnSort.Size = new System.Drawing.Size(102, 23);
             this.BtnSort.TabIndex = 10;
@@ -94,43 +87,70 @@
             // 
             // BtnEdit
             // 
-            this.BtnEdit.Location = new System.Drawing.Point(328, 214);
+            this.BtnEdit.Location = new System.Drawing.Point(180, 318);
             this.BtnEdit.Name = "BtnEdit";
             this.BtnEdit.Size = new System.Drawing.Size(102, 23);
             this.BtnEdit.TabIndex = 11;
             this.BtnEdit.Text = "Edit";
             this.BtnEdit.UseVisualStyleBackColor = true;
+            this.BtnEdit.Click += new System.EventHandler(this.BtnEdit_Click);
             // 
             // BtnDelete
             // 
-            this.BtnDelete.Location = new System.Drawing.Point(328, 264);
+            this.BtnDelete.Location = new System.Drawing.Point(328, 261);
             this.BtnDelete.Name = "BtnDelete";
             this.BtnDelete.Size = new System.Drawing.Size(102, 23);
             this.BtnDelete.TabIndex = 12;
             this.BtnDelete.Text = "Delete";
             this.BtnDelete.UseVisualStyleBackColor = true;
+            this.BtnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
             // 
-            // BtnQuit
+            // txtIndex
             // 
-            this.BtnQuit.Location = new System.Drawing.Point(328, 404);
-            this.BtnQuit.Name = "BtnQuit";
-            this.BtnQuit.Size = new System.Drawing.Size(102, 23);
-            this.BtnQuit.TabIndex = 13;
-            this.BtnQuit.Text = "Quit";
-            this.BtnQuit.UseVisualStyleBackColor = true;
+            this.txtIndex.Location = new System.Drawing.Point(34, 320);
+            this.txtIndex.Name = "txtIndex";
+            this.txtIndex.Size = new System.Drawing.Size(100, 20);
+            this.txtIndex.TabIndex = 14;
+            // 
+            // txtNewValue
+            // 
+            this.txtNewValue.Location = new System.Drawing.Point(34, 381);
+            this.txtNewValue.Name = "txtNewValue";
+            this.txtNewValue.Size = new System.Drawing.Size(100, 20);
+            this.txtNewValue.TabIndex = 15;
+            // 
+            // lblIndex
+            // 
+            this.lblIndex.AutoSize = true;
+            this.lblIndex.Location = new System.Drawing.Point(34, 301);
+            this.lblIndex.Name = "lblIndex";
+            this.lblIndex.Size = new System.Drawing.Size(33, 13);
+            this.lblIndex.TabIndex = 16;
+            this.lblIndex.Text = "Index";
+            // 
+            // lblNewValue
+            // 
+            this.lblNewValue.AutoSize = true;
+            this.lblNewValue.Location = new System.Drawing.Point(34, 362);
+            this.lblNewValue.Name = "lblNewValue";
+            this.lblNewValue.Size = new System.Drawing.Size(59, 13);
+            this.lblNewValue.TabIndex = 17;
+            this.lblNewValue.Text = "New Value";
             // 
             // FrmAstroProcessing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(474, 450);
-            this.Controls.Add(this.BtnQuit);
+            this.Controls.Add(this.lblNewValue);
+            this.Controls.Add(this.lblIndex);
+            this.Controls.Add(this.txtNewValue);
+            this.Controls.Add(this.txtIndex);
             this.Controls.Add(this.BtnDelete);
             this.Controls.Add(this.BtnEdit);
             this.Controls.Add(this.BtnSort);
             this.Controls.Add(this.BtnSearch);
             this.Controls.Add(this.listBoxOutput);
-            this.Controls.Add(this.BtnClear);
             this.Controls.Add(this.lblInteractions);
             this.Controls.Add(this.txtBxInput);
             this.Name = "FrmAstroProcessing";
@@ -145,12 +165,14 @@
         private System.Windows.Forms.TextBox txtBxInput;
         private System.Windows.Forms.Label lblInteractions;
         private System.Windows.Forms.ListBox listBoxOutput;
-        private System.Windows.Forms.Button BtnClear;
         private System.Windows.Forms.Button BtnSearch;
         private System.Windows.Forms.Button BtnSort;
         private System.Windows.Forms.Button BtnEdit;
         private System.Windows.Forms.Button BtnDelete;
-        private System.Windows.Forms.Button BtnQuit;
+        private System.Windows.Forms.TextBox txtIndex;
+        private System.Windows.Forms.TextBox txtNewValue;
+        private System.Windows.Forms.Label lblIndex;
+        private System.Windows.Forms.Label lblNewValue;
     }
 }
 

@@ -18,6 +18,7 @@ namespace Neutrino_Astronomy_Processing
             InitializeComponent();
             // Call a method to fill Array at start up
             FillArray();
+            BtnDelete.Click += new EventHandler(BtnDelete_Click);
         }
         // Array of random integers, global variables
         static int max = 24;
@@ -53,11 +54,13 @@ namespace Neutrino_Astronomy_Processing
         {
             // Create a random number
             Random random = new Random();
-            for (int i = 0; i <= max; i++)
+            for (int i = 0; i < max; i++)
             {
                 // Random number 10, 90
                 neutrinoInteractions[i] = random.Next(10, 90);
             }
+            // Display initial Array
+            ShowArray();
         }
 
         private void BtnSearch_Click(object sender, EventArgs e)
@@ -106,6 +109,50 @@ namespace Neutrino_Astronomy_Processing
             {
                 listBoxOutput.Items.Add(neutrinoInteractions[i]);
             }
+        }
+
+        // Method to Edit a value in the array
+        private void BtnEdit_Click(object sender, EventArgs e)
+        {
+            int Index, newValue;
+            if (!(Int32.TryParse(txtIndex.Text, out Index)) || !(Int32.TryParse(txtNewValue.Text, out newValue)))
+            {
+                MessageBox.Show("Please enter valid integer values for the Index and New Value");
+                return;
+            }
+                
+             if (Index < 0 || Index >= max)
+
+            {   MessageBox.Show("Index out of bounds");
+                return;
+            }
+            neutrinoInteractions[Index] = newValue;
+            ShowArray();
+        }
+
+        private void BtnDelete_Click(object sender, EventArgs e)
+        {
+            int Index;
+            if(!Int32.TryParse(txtIndex.Text,out Index))
+            {
+                MessageBox.Show("Please enter a valid integer value for the Index");
+                return;
+            }
+            if(Index < 0 || Index >= max)
+            {
+                MessageBox.Show("Index out of bounds");
+                return;
+            }
+            // Shift elements to the left to fill the gap
+            for (int i = Index; i < max - 1; i++)
+            {
+                neutrinoInteractions[i] = neutrinoInteractions[i + 1];
+            }
+            // Set the last element to 0 (or any default value)
+            neutrinoInteractions[max - 1] = 0;
+            ShowArray();
+            txtIndex.Clear();
+            txtNewValue.Clear();
         }
     }
 }
