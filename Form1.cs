@@ -9,6 +9,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
 
+// Kabo Masimege, (Team Name), Sprint Number 1
+// Date: 05/09/2024
+// Version 3
+// Neutrino Processing Application
+// the application processes and stores hourly neutrino interactions
+// It records, processes and displays integer data
 namespace Neutrino_Astronomy_Processing
 {
     public partial class FrmAstroProcessing : Form
@@ -35,16 +41,18 @@ namespace Neutrino_Astronomy_Processing
                         // Swap elements
                         int temp_data = neutrinoInteractions[j];
                         neutrinoInteractions[j] = neutrinoInteractions[j + 1];
-                            neutrinoInteractions[j + 1] = temp_data;
+                        neutrinoInteractions[j + 1] = temp_data;
                     }
                 }
             }
+            // Display sorted array
+            ShowArray(0, data - 1);
         }
         // Method to display Array
-        private void ShowArray()
+        public void ShowArray(int low, int high)
         {
             listBoxOutput.Items.Clear();
-            for (int i = 0;i < max;i++)
+            for (int i = low;i <= high; i++)
             {
                 listBoxOutput.Items.Add(neutrinoInteractions[i]);
             }
@@ -60,51 +68,58 @@ namespace Neutrino_Astronomy_Processing
                 neutrinoInteractions[i] = random.Next(10, 90);
             }
             // Display initial Array
-            ShowArray();
+            ShowArray(0, max - 1);
         }
 
+        // Binary search method
+        private int BinarySearch(int[] array, int key)
+        {
+            int min = 0;
+            int max = array.Length - 1;
+
+            while (min <= max)
+            {
+                int mid = (min + max) / 2;
+                if (array[mid] == key)
+                {
+                    return mid; // Key found
+                }
+                else if (array[mid] < key)
+                {
+                    min = mid + 1;
+                }
+                else
+                {
+                    max = mid - 1;
+                }
+            }
+            return -1; // Key not found
+        }
+        // Search Button Event handler
         private void BtnSearch_Click(object sender, EventArgs e)
         {
-            int mid;
-            int lowBound = 0;
-            int highBound = max - 1;
-            int target;
-            if (!(Int32.TryParse(listBoxOutput.Text, out target)))
+            // Ensure the array is sorted before searching
+            BtnSort_Click(sender, e);
+            int key;
+            if (!int.TryParse(listBoxOutput.Text, out key))
             {
                 MessageBox.Show("Please enter an integer value");
                 return;
             }
+            int result = BinarySearch(neutrinoInteractions, key);
+            if ( result != -1)
             {
-                while (lowBound <= highBound) //Check "<" or "<="
-                {
-                    // Display list
-                    ShowArray(lowBound, highBound);
-                    // Find the midpoint
-                    mid = (lowBound + highBound) / 2;
-                    // Pause with a messagebox
-                    MessageBox.Show("Low:" + lowBound + " Mid:" + mid + " High:" + highBound);
-                    if (neutrinoInteractions[mid] == target)
-                    {
-                        // Target has been found
-                        listBoxOutput.Items.Add("Found at index" + mid);
-                        return;
-                    }
-                    else if (neutrinoInteractions[mid] > target)
-                    {
-                        highBound = mid - 1;
-                    }
-                    else
-                    {
-                        lowBound = mid + 1;
-                    }
-                }
-                MessageBox.Show("Query not found, try again");
+                MessageBox.Show($"Value found at index{result}");
+            }
+            else 
+            {
+                MessageBox.Show("Value not found in the array");
             }
         }
         // Method to display Array
         public void ShowArray (int low, int high)
         {
-            listBoxOutput.Items.Clear();
+           listBoxOutput.Items.Clear ();
             for (int i = low; i <= high; i++)
             {
                 listBoxOutput.Items.Add(neutrinoInteractions[i]);
@@ -115,7 +130,7 @@ namespace Neutrino_Astronomy_Processing
         private void BtnEdit_Click(object sender, EventArgs e)
         {
             int Index, newValue;
-            if (!(Int32.TryParse(txtIndex.Text, out Index)) || !(Int32.TryParse(txtNewValue.Text, out newValue)))
+            if (!Int32.TryParse(txtIndex.Text, out Index) || !Int32.TryParse(txtNewValue.Text, out newValue))
             {
                 MessageBox.Show("Please enter valid integer values for the Index and New Value");
                 return;
@@ -127,13 +142,14 @@ namespace Neutrino_Astronomy_Processing
                 return;
             }
             neutrinoInteractions[Index] = newValue;
-            ShowArray();
+            ShowArray(0, max - 1);
         }
-
+        
+        // Method to delete a value from the array
         private void BtnDelete_Click(object sender, EventArgs e)
         {
             int Index;
-            if(!Int32.TryParse(txtIndex.Text,out Index))
+            if(!Int32.TryParse(txtIndex.Text, out Index))
             {
                 MessageBox.Show("Please enter a valid integer value for the Index");
                 return;
@@ -150,7 +166,7 @@ namespace Neutrino_Astronomy_Processing
             }
             // Set the last element to 0 (or any default value)
             neutrinoInteractions[max - 1] = 0;
-            ShowArray();
+            ShowArray(0, max - 1);
             txtIndex.Clear();
             txtNewValue.Clear();
         }

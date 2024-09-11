@@ -67,7 +67,7 @@
             // 
             // BtnSearch
             // 
-            this.BtnSearch.Location = new System.Drawing.Point(328, 111);
+            this.BtnSearch.Location = new System.Drawing.Point(328, 185);
             this.BtnSearch.Name = "BtnSearch";
             this.BtnSearch.Size = new System.Drawing.Size(102, 23);
             this.BtnSearch.TabIndex = 9;
@@ -77,7 +77,7 @@
             // 
             // BtnSort
             // 
-            this.BtnSort.Location = new System.Drawing.Point(328, 192);
+            this.BtnSort.Location = new System.Drawing.Point(328, 111);
             this.BtnSort.Name = "BtnSort";
             this.BtnSort.Size = new System.Drawing.Size(102, 23);
             this.BtnSort.TabIndex = 10;
