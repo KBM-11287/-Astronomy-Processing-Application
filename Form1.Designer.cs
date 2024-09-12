@@ -39,6 +39,7 @@
             this.txtNewValue = new System.Windows.Forms.TextBox();
             this.lblIndex = new System.Windows.Forms.Label();
             this.lblNewValue = new System.Windows.Forms.Label();
+            this.TextBoxMessage = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // txtBxInput
@@ -137,11 +138,20 @@
             this.lblNewValue.TabIndex = 17;
             this.lblNewValue.Text = "New Value";
             // 
+            // TextBoxMessage
+            // 
+            this.TextBoxMessage.Location = new System.Drawing.Point(235, 381);
+            this.TextBoxMessage.Name = "TextBoxMessage";
+            this.TextBoxMessage.ReadOnly = true;
+            this.TextBoxMessage.Size = new System.Drawing.Size(195, 20);
+            this.TextBoxMessage.TabIndex = 18;
+            // 
             // FrmAstroProcessing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(474, 450);
+            this.Controls.Add(this.TextBoxMessage);
             this.Controls.Add(this.lblNewValue);
             this.Controls.Add(this.lblIndex);
             this.Controls.Add(this.txtNewValue);
@@ -173,6 +183,7 @@
         private System.Windows.Forms.TextBox txtNewValue;
         private System.Windows.Forms.Label lblIndex;
         private System.Windows.Forms.Label lblNewValue;
+        private System.Windows.Forms.TextBox TextBoxMessage;
     }
 }
 

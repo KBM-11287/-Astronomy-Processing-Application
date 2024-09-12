@@ -11,7 +11,7 @@ using System.Threading;
 
 // Kabo Masimege, (Team Name), Sprint Number 1
 // Date: 05/09/2024
-// Version 3
+// Version 8
 // Neutrino Processing Application
 // the application processes and stores hourly neutrino interactions
 // It records, processes and displays integer data
@@ -29,7 +29,11 @@ namespace Neutrino_Astronomy_Processing
             BtnEdit.Click += new EventHandler(BtnEdit_Click);
 
         }
-
+        // Global variables
+        static int arraySize = 24;
+        int[] integerArray = new int[arraySize];
+        Random r = new Random();
+        int comparisonCounter = 0;
         // Array of random integers, global variables
         static int max = 24;
         int[] neutrinoInteractions = new int[max];
@@ -77,50 +81,43 @@ namespace Neutrino_Astronomy_Processing
         }
         
 
-        // Binary search method
-        private int BinarySearch(int[] array, int key)
-        {
-            int min = 0;
-            int max = array.Length - 1;
-
-            while (min <= max)
-            {
-                int mid = (min + max) / 2;
-                if (array[mid] == key)
-                {
-                    return mid; // Key found
-                }
-                else if (array[mid] < key)
-                {
-                    min = mid + 1;
-                }
-                else
-                {
-                    max = mid - 1;
-                }
-            }
-            return -1; // Key not found
-        }
+        // Binary search method was here
+       
         // Search Button Event handler
         private void BtnSearch_Click(object sender, EventArgs e)
         {
-            // Ensure the array is sorted before searching
-            BtnSort_Click(sender, e);
-            int key;
-            if (!int.TryParse(listBoxOutput.Text, out key))
+            comparisonCounter = 0;
+            int min = 0;
+            int max = arraySize - 1;
+            if (!(Int32.TryParse(txtBxInput.Text, out int target)))
             {
-                MessageBox.Show("Please enter an integer value");
+                TextBoxMessage.Text = "You must enter an integer";
                 return;
             }
-            int result = BinarySearch(neutrinoInteractions, key);
-            if ( result != -1)
+            while (min <= max)
             {
-                MessageBox.Show($"Value found at index{result}");
+                comparisonCounter++;
+                int mid = (min + max) / 2;
+                if (target == integerArray[mid])
+                {
+                    TextBoxMessage.Text = target + " Found at index " + mid +
+                        "\r\n" + "Number of comparisons " + comparisonCounter;
+                    txtBxInput.Clear();
+                    txtBxInput.Focus();
+                    return;
+                }
+                else if (integerArray[mid] >= target)
+                {
+                    max = mid - 1;
+                }
+                else
+                {
+                    min = mid + 1;
+                }
             }
-            else 
-            {
-                MessageBox.Show("Value not found in the array");
-            }
+            TextBoxMessage.Text = "Not Found, try again." + "\r\n" + "Number of comparisons " + comparisonCounter;
+            txtBxInput.Clear();
+            txtBxInput.Focus();
         }
         
 
