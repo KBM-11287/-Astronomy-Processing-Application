@@ -25,10 +25,28 @@ namespace Neutrino_Astronomy_Processing
             // Call a method to fill Array at start up
             FillArray();
             BtnDelete.Click += new EventHandler(BtnDelete_Click);
+            BtnSearch.Click += new EventHandler(BtnSearch_Click);
+            BtnEdit.Click += new EventHandler(BtnEdit_Click);
+
         }
+
         // Array of random integers, global variables
         static int max = 24;
         int[] neutrinoInteractions = new int[max];
+
+        // Method to fill Array with random numbers
+        public void FillArray()
+        {
+            // Create a random number
+            Random random = new Random();
+            for (int i = 0; i < max; i++)
+            {
+                // Random number 10, 90
+                neutrinoInteractions[i] = random.Next(10, 90);
+            }
+            // Display initial Array
+            ShowArray(0, max - 1);
+        }
         private void BtnSort_Click(object sender, EventArgs e)
         {
             int data  = neutrinoInteractions.Length;
@@ -51,25 +69,13 @@ namespace Neutrino_Astronomy_Processing
         // Method to display Array
         public void ShowArray(int low, int high)
         {
-            listBoxOutput.Items.Clear();
+            listBoxOutput.Items.Clear(); // Clear the list box before displaying new data
             for (int i = low;i <= high; i++)
             {
-                listBoxOutput.Items.Add(neutrinoInteractions[i]);
+                listBoxOutput.Items.Add(neutrinoInteractions[i]); // Add each element to the list box
             }
         }
-        // Method to fill Array with random numbers
-        public void FillArray()
-        {
-            // Create a random number
-            Random random = new Random();
-            for (int i = 0; i < max; i++)
-            {
-                // Random number 10, 90
-                neutrinoInteractions[i] = random.Next(10, 90);
-            }
-            // Display initial Array
-            ShowArray(0, max - 1);
-        }
+        
 
         // Binary search method
         private int BinarySearch(int[] array, int key)
@@ -116,15 +122,7 @@ namespace Neutrino_Astronomy_Processing
                 MessageBox.Show("Value not found in the array");
             }
         }
-        // Method to display Array
-        public void ShowArray (int low, int high)
-        {
-           listBoxOutput.Items.Clear ();
-            for (int i = low; i <= high; i++)
-            {
-                listBoxOutput.Items.Add(neutrinoInteractions[i]);
-            }
-        }
+        
 
         // Method to Edit a value in the array
         private void BtnEdit_Click(object sender, EventArgs e)
